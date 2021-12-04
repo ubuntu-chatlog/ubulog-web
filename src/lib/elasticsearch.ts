@@ -4,7 +4,7 @@ import { dev } from '$app/env'
 
 let es_url = 'http://localhost:9200'
 if (!dev) {
-    let es_url = 'http://elasticsearch-master:9200'
+    es_url = 'http://elasticsearch-master:9200'
 }
 
 export const elasticsearch = new esClient({
