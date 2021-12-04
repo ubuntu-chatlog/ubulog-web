@@ -1,19 +1,19 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: "danik8s-9193"
+  name: "ubulog-web"
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: "danik8s-9193"
+      app: "ubulog-web"
   template:
     metadata:
       labels:
-        app: "danik8s-9193"
+        app: "ubulog-web"
     spec:
       containers:
-        - name: "danik8s-9193"
-          image: "ubuntuchatlog.azurecr.io/danik8s"
+        - name: "ubulog-web"
+          image: "ubuntuchatlog.azurecr.io/ubulog-web"
           ports:
           - containerPort: 3000

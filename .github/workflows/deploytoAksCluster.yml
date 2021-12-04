@@ -44,6 +44,7 @@ jobs:
         manifests: |
           manifests/deployment.yml
           manifests/service.yml
+          manifests/ingress.yml
         images: |
           ubuntuchatlog.azurecr.io/danik8s:${{ github.sha }}
         imagepullsecrets: |
