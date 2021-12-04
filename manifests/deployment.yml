@@ -1,19 +1,19 @@
 apiVersion : apps/v1
 kind: Deployment
 metadata:
-  name: "ubulog-web"
+  name: "chatlog-web"
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: "ubulog-web"
+      app: "chatlog-web"
   template:
     metadata:
       labels:
-        app: "ubulog-web"
+        app: "chatlog-web"
     spec:
       containers:
-        - name: "ubulog-web"
-          image: "ubuntuchatlog.azurecr.io/ubulog-web"
+        - name: "chatlog-web"
+          image: "ubuntuchatlog.azurecr.io/ubuntu-chatlog-web"
           ports:
           - containerPort: 3000

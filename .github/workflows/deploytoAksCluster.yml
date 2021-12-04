@@ -22,8 +22,8 @@ jobs:
     - name: Build and push image to ACR
       id: build-image
       run: |
-        docker build "$GITHUB_WORKSPACE/" -f  "Dockerfile" -t ubuntuchatlog.azurecr.io/danik8s:${{ github.sha }} --label dockerfile-path=Dockerfile
-        docker push ubuntuchatlog.azurecr.io/danik8s:${{ github.sha }}
+        docker build "$GITHUB_WORKSPACE/" -f  "Dockerfile" -t ubuntuchatlog.azurecr.io/ubuntu-chatlog-web:${{ github.sha }} --label dockerfile-path=Dockerfile
+        docker push ubuntuchatlog.azurecr.io/ubuntu-chatlog-web:${{ github.sha }}
     
     - uses: azure/k8s-set-context@v1
       with:
@@ -54,6 +54,6 @@ jobs:
           manifests/service.yml
           manifests/ingress.yml
         images: |
-          ubuntuchatlog.azurecr.io/danik8s:${{ github.sha }}
+          ubuntuchatlog.azurecr.io/ubuntu-chatlog-web:${{ github.sha }}
         imagepullsecrets: |
           danik8sdockerauth
