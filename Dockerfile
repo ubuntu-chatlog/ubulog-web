@@ -10,11 +10,12 @@ RUN npm run build
 
 FROM node:16
 
+EXPOSE 3000
 WORKDIR /app
 
 ENV NODE_ENV=production
 
-COPY --from=build /app/package* /app
+COPY --from=build /app/package* /app/
 
 RUN npm install
 
