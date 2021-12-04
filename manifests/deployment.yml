@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "danik8s-9193"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "danik8s-9193"
+  template:
+    metadata:
+      labels:
+        app: "danik8s-9193"
+    spec:
+      containers:
+        - name: "danik8s-9193"
+          image: "ubuntuchatlog.azurecr.io/danik8s"
+          ports:
+          - containerPort: 3000
