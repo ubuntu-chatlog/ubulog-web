@@ -10,7 +10,9 @@ spec:
     - host: ubulog.com
       http:
         paths:
-          - backend:
+          - path: /
+            pathType: prefix
+            backend:
               service:
                 name:  ubulog-web
                 port:
