@@ -1,7 +1,15 @@
-on: [push]
+name: 🚀 Deploy to Production
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment: prod
+
     steps:
     - uses: actions/checkout@master
     
