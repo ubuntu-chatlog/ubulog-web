@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+    name: "danik8s-9193"
+    labels:
+        app: "danik8s-9193"
+spec:
+    type: LoadBalancer
+    ports:
+    - port: 3000
+      targetPort: 3000
+      protocol: TCP
+      name: http
+    selector:
+        app: "danik8s-9193"
