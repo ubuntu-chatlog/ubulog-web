@@ -17,7 +17,7 @@ spec:
                 name: chatlog-web
                 port:
                   number: 3000
-      tls:
-        hosts:
-          - ubulog.com
-        secretName: ubulog-web-tls
+  tls:
+    hosts:
+      - ubulog.com
+    secretName: ubulog-web-tls
