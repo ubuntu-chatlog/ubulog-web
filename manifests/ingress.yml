@@ -3,8 +3,8 @@ kind: Ingress
 metadata:
   name: chatlog-web
   annotations:
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.entrypoints: web
+    kubernetes.io/ingress.class: nginx
+    cert-manager/issuer: letsencrypt
 spec:
   rules:
     - host: ubulog.com
@@ -17,25 +17,7 @@ spec:
                 name: chatlog-web
                 port:
                   number: 3000
----
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: chatlog-websecure
-  annotations:
-    kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.entrypoints: websecure
-    traefik.ingress.kubernetes.io/router.tls: "true"
-    traefik.ingress.kubernetes.io/router.tls.certresolver: letsencrypt
-spec:
-  rules:
-    - host: ubulog.com
-      http:
-        paths:
-          - path: /
-            pathType: Prefix
-            backend:
-              service:
-                name: chatlog-web
-                port:
-                  number: 3000
+      tls:
+        hosts:
+          - ubulog.com
+        secretName: ubulog-web-tls
