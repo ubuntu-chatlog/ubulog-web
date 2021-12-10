@@ -1,4 +1,5 @@
-import { Client as esClient } from 'elasticsearch'
+import pkg from 'elasticsearch';
+const { Client: esClient } = pkg;
 
 import { dev } from '$app/env'
 
