@@ -35,7 +35,6 @@
         if (arrData.length > 0 ) {
             const dataPoints = Object.fromEntries(arrData)
 
-            console.dir(dataPoints)
             chart = new Chart(chart, {
                 type: 'heatmap',
                 data: {

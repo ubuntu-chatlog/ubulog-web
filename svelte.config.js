@@ -42,12 +42,6 @@ const config = {
 			}
 		}),
 
-		vite: {
-			ssr: {
-				noExternal: ['elasticsearch']
-			},
-		},
-
 		// hydrate the <div id="svelte"> element in src/app.html
 		target: '#svelte'
 	}
