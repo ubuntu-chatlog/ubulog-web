@@ -20,7 +20,7 @@ export async function get({ query, locals }) {
     return {
         body: {
             activity:  response.aggregations?.date?.buckets ?? [],
-            totalMessages: response.hits.total.value,
+            totalMessages: response.aggregations?.date?.buckets.reduce((final_value, bucket) => final_value + bucket.doc_count, 0),
         }
     }
 }

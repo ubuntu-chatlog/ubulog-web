@@ -54,4 +54,6 @@
 
 <h1>Ubuntu Chatlogs</h1>
 
+<p>Total chat events indexed: {totalMessages}</p>
+
 <div bind:this={chart} on:data-select></div>
