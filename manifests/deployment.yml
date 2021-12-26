@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: "chatlog-web"
-          image: "ubuntuchatlog.azurecr.io/ubuntu-chatlog-web"
+          image: "diddledan/ubuntu-chatlog-web"
           ports:
           - containerPort: 3000

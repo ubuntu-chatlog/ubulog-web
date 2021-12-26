@@ -29,6 +29,21 @@ jobs:
       with:
          kubeconfig: ${{ secrets.aks_danik8s_kubeConfig }}
       id: login
+
+    - name: Login to DockerHub
+      uses: docker/login-action@v1 
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+    - name: Build and push to Docker Hub
+      id: docker_build
+      uses: docker/build-push-action@v2
+      with:
+        push: true
+        tags: |
+          diddledan/ubuntu-chatlog-web:${{ github.sha }}
+          diddledan/ubuntu-chatlog-web:latest
     
     - name: Create namespace
       run: |
@@ -45,7 +60,7 @@ jobs:
         container-registry-username: ${{ secrets.acr_ubuntuchatlog_username }}
         container-registry-password: ${{ secrets.acr_ubuntuchatlog_password }}
         secret-name: danik8sdockerauth
-       
+
     - uses: azure/k8s-deploy@v1.2
       with:
         namespace: ubuntu-chatlogs
