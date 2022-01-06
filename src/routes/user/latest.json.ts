@@ -1,7 +1,7 @@
 import { elasticsearch } from '$lib/elasticsearch'
 import type { IRCMessage } from '$lib/IRCMessage'
 
-export async function get({ query, locals }) {
+export async function get({ query, locals }): Promise<{ body: { latest: IRCMessage[] } }> {
     const usernames = query.get('usernames').split(',') ?? []
 
     const response = await elasticsearch.search<IRCMessage>({

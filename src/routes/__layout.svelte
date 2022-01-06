@@ -69,7 +69,7 @@
     </div>
 </header>
 
-<section id="search-docs" class="p-strip--light is-shallow">
+<!-- <section id="search-docs" class="p-strip--light is-shallow">
     <div class="row">
         <form class="p-search-box u-no-margin--bottom">
             <input type="search" class="p-search-box__input" name="q" placeholder="Search IRC Logs" required autocomplete="on" bind:this={searchBox}>
@@ -77,7 +77,7 @@
             <button type="submit" class="p-search-box__button" name="submitSearch"><i class="p-icon--search">Search</i></button>
         </form>
     </div>
-</section>
+</section> -->
 
 <div class="p-strip is-shallow">
     <div class="row">

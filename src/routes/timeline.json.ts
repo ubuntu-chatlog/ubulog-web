@@ -1,6 +1,7 @@
 import { elasticsearch } from '$lib/elasticsearch'
+import type { TimelineEntry } from '$lib/TimelineEntry'
 
-export async function get({ query, locals }) {
+export async function get({ query, locals }): Promise<{ body: { activity: TimelineEntry[], totalMessages: number} }> {
     const response = await elasticsearch.search({
         body: {
             "aggregations": {
@@ -9,17 +10,16 @@ export async function get({ query, locals }) {
                         "field": "@timestamp",
                         "calendar_interval": "1M",
                         "time_zone": "UTC",
-                        "format": "yyyy-MM-dd",
-                        "min_doc_count": 1
                     },
                 },
             },
+            "size": 0,
         },
     })
 
     return {
         body: {
-            activity:  response.aggregations?.date?.buckets ?? [],
+            activity:  response.aggregations?.date?.buckets as TimelineEntry[] ?? [],
             totalMessages: response.aggregations?.date?.buckets.reduce((final_value, bucket) => final_value + bucket.doc_count, 0),
         }
     }
