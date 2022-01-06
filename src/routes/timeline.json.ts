@@ -17,10 +17,11 @@ export async function get({ query, locals }): Promise<{ body: { activity: Timeli
         },
     })
 
+    const data = response.aggregations?.date?.buckets as TimelineEntry[] ?? [];
     return {
         body: {
-            activity:  response.aggregations?.date?.buckets as TimelineEntry[] ?? [],
-            totalMessages: response.aggregations?.date?.buckets.reduce((final_value, bucket) => final_value + bucket.doc_count, 0),
+            activity:  data,
+            totalMessages: data.reduce((final_value, bucket) => final_value + bucket.doc_count, 0),
         }
     }
 }
