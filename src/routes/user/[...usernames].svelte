@@ -55,14 +55,24 @@
     })
 </script>
 
+<style>
+    .chatlog {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.8rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+</style>
+
 <p>User activity for {usernames} over the past year (total messages: {totalMessages})</p>
 <div bind:this={chart} on:data-select></div>
 
 <p>Latest 500 messages by {usernames} across all channels for all time</p>
 {#if latest.length > 0}
-    <ul>
+    <ul class="chatlog">
         {#each latest as message}
-            <li>[<time datetime={message['@timestamp']}>{new Intl.DateTimeFormat([], { dateStyle: "short", timeStyle: "long" }).format(new Date(message['@timestamp']))}</time>] #{message.channel}: {message.text}</li>
+            <li>[<time datetime={message['@timestamp']}>{new Intl.DateTimeFormat([], { dateStyle: "short", timeStyle: "long" }).format(new Date(message['@timestamp']))}</time>] <a href="/channel/{message.channel}">#{message.channel}</a>: {message.text}</li>
         {/each}
     </ul>
 {:else}
