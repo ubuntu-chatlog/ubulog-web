@@ -17,7 +17,7 @@
 {#if messages.length > 0}
     <ul>
         {#each messages as message}
-            <li>{message.event.original}</li>
+            <li>[<time datetime={message['@timestamp']}>{new Intl.DateTimeFormat([], { dateStyle: "short", timeStyle: "long" }).format(new Date(message['@timestamp']))}</time>] #{message.channel}: &lt;{message.nick}&gt; {message.text}</li>
         {/each}
     </ul>
 {:else}

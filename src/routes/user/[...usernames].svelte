@@ -62,7 +62,7 @@
 {#if latest.length > 0}
     <ul>
         {#each latest as message}
-            <li>[<time datetime={message['@timestamp']}>{(new Date(message['@timestamp'])).toLocaleDateString()} {(new Date(message['@timestamp'])).toLocaleTimeString()}</time>] #{message.channel}: {message.text}</li>
+            <li>[<time datetime={message['@timestamp']}>{new Intl.DateTimeFormat([], { dateStyle: "short", timeStyle: "long" }).format(new Date(message['@timestamp']))}</time>] #{message.channel}: {message.text}</li>
         {/each}
     </ul>
 {:else}
